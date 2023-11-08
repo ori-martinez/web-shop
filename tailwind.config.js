@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         'pink-baby': '#F4ECF4',
         'pink-strong': '#FC7CAC',
+        'pink-stronger': '#F2004B',
       },
     },
   },

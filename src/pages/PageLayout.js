@@ -36,7 +36,14 @@ export const PageLayout = ({children}) => {
                     setOpen={setOpen}
                     title={'Arnés de Glúteos con Esposas'}
                     description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text'}
-                    collageImages={[]}
+                    collageImages={[
+                        'https://res.cloudinary.com/djosi3wtf/image/upload/v1699462827/imagen_1_Kit_BDSM_Set_ptvzad.jpg',
+                        'https://res.cloudinary.com/djosi3wtf/image/upload/v1699462827/imagen_2_Kit_BDSM_Set_s6wo2n.jpg'
+                    ]}
+                    colors={[
+                        'Negro',
+                        'Rojo'
+                    ]}
                 />
 
 

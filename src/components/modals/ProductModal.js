@@ -1,4 +1,4 @@
-import {Fragment} from 'react';
+import {Fragment, useState} from 'react';
 /* Headless UI */
 import {Dialog, Transition} from '@headlessui/react';
 /* Icons */
@@ -6,7 +6,9 @@ import {AiOutlineClose} from 'react-icons/ai';
 import {FaShareSquare} from "react-icons/fa";
 
 
-export const ProductModal = ({open, setOpen, title, description}) => {
+export const ProductModal = ({open, setOpen, title, description, collageImages, colors}) => {
+
+    const [mainImage, setMainImage] = useState(collageImages[0]);
 
     return (
         <Transition.Root as={Fragment} show={open}>
@@ -69,52 +71,76 @@ export const ProductModal = ({open, setOpen, title, description}) => {
 
                                 {/* Título */}
 
-                                <div
-                                    className='flex flex-col text-center md:flex-none md:text-left md:relative md:m-0 lg:flex-none lg:text-left lg:relative xl:flex-none xl:text-left xl:relative text-base'>
+                                <div className='flex flex-col text-center md:flex-none md:text-left md:relative md:m-0 lg:flex-none lg:text-left lg:relative xl:flex-none
+                                    xl:text-left xl:relative text-base'
+                                >
                                     <div className="grid grid-cols-6 gap-4 mt-6 mb-8">
-                                        {/* Lado Izquierdo */}
-                                        <div className="col-span-6 md:col-span-3">
+                                        <div className="col-span-6 md:col-span-3 relative">
                                             <div className='flex flex-col md:flex-row'>
                                                 {/* Imagen */}
                                                 <div className='relative w-3/4 ml-8 h-auto'>
                                                     <button
                                                         type="button"
                                                         className="absolute -top-1 right-0 mr-4 h-14 w-16 inline-flex items-center px-6 py-3 border border-transparent
-                                                        text-base font-medium rounded-b-lg shadow-sm text-white bg-rose-500 hover:bg-rose-600 focus:outline-none"
+                                                            text-base font-medium rounded-b-lg shadow-sm text-white bg-rose-500 hover:bg-rose-600 focus:outline-none"
                                                     >
                                                         <div className={'p-2'}>
                                                             <FaShareSquare className={'-ml-2.5 text-white h-5 w-5'}/>
                                                         </div>
-
                                                     </button>
                                                     <img
                                                         alt='#'
                                                         className='border-solid border border-gray-300 rounded-3xl'
-                                                        src={'https://res.cloudinary.com/djosi3wtf/image/upload/v1699462687/Imagen_1_Arnes_de_Gl%C3%BAteos_con_Esposas_xrqsal.jpg'}
+                                                        src={mainImage}
                                                     />
+
+                                                    {/* Preview pequeño circular */}
+                                                    <div className="absolute -bottom-4 left-3 flex space-x-4">
+                                                        {collageImages.map((image, index) => (
+                                                            <button
+                                                                onClick={() => setMainImage(image)}
+                                                                key={index}
+                                                                className="bg-white -mr-3 rounded-full border border-gray-300"
+                                                            >
+                                                                <img
+                                                                    alt='#'
+                                                                    className='w-14 h-14 rounded-full'
+                                                                    src={image}
+                                                                />
+                                                            </button>
+                                                        ))}
+                                                    </div>
                                                 </div>
-
-
                                             </div>
                                         </div>
 
                                         {/* Lado Derecho */}
                                         <div className='col-span-6 md:col-span-3 md:-ml-24'>
-
                                             <div className='flex flex-col md:flex-row mb-2'>
-                                                <div className='text-base font-semibold mb-2 md:mb-0 md:mr-4 mt-2'>{title}</div>
+                                                <div
+                                                    className='text-base font-semibold mb-2 md:mb-0 md:mr-4 mt-2'>{title}</div>
                                             </div>
 
                                             <div className='pt-2 md:pt-0'>
-                                                <div className='font-base text-gray-500 text-sm mb-4'>{description}</div>
+                                                <div
+                                                    className='font-base text-gray-500 text-sm mb-4'>{description}</div>
                                             </div>
 
                                             <div className='border-t border-gray-300 pt-2 md:pt-0'>
                                                 <div className='font-semibold mt-4'>Color</div>
+                                                {colors.map((color, index) => (
+                                                    <div key={index} className='flex items-center mt-2'>
+                                                        <label className='inline-flex items-center'>
+                                                            <input value={color} type='radio'
+                                                                   className={`form-radio h-5 w-5 disable`}
+                                                                   name='color'
+                                                                   disabled/>
+                                                            <span className='ml-2 font-bold'>{color}</span>
+                                                        </label>
+                                                    </div>
+                                                ))}
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </header>

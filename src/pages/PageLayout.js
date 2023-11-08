@@ -25,10 +25,19 @@ export const PageLayout = ({children}) => {
 
 
             <div className='p-2 mx-2 -mt-12 bg-white rounded-xl shadow-2xl lg:mx-20 lg:-mt-4'>
-                <button onClick={() => setOpen(!open)}>
+                <button
+                    onClick={() => setOpen(!open)}
+                >
                     Modal
                 </button>
-                <ProductModal open={open} setOpen={setOpen}/>
+
+                <ProductModal
+                    open={open}
+                    setOpen={setOpen}
+                    title={'Arnés de Glúteos con Esposas'}
+                    description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text'}
+                    collageImages={[]}
+                />
 
 
                 {children}

@@ -1,15 +1,36 @@
 import React from 'react';
 /* Components */
-import { Navbar } from '../components/Navbar';
+import {Navbar} from '../components/Navbar';
+import {ProductModal} from '../components/modals/ProductModal';
+
+/* Hooks */
+import { useState } from 'react';
 
 // PLANTILLA
 /* Estructura Base de una Página */
-export const PageLayout = ({ children }) => (
-    <div className='min-h-screen bg-pink-strong overflow-x-hidden'>
-        <Navbar />
+export const PageLayout = ({children}) => {
 
-        <div className='p-2 mx-2 -mt-12 bg-white rounded-xl shadow-2xl lg:mx-20 lg:-mt-4'>
-            { children }
+    // CONSTANTES
+    const [ open, setOpen ] = useState(false);
+
+    /* Funcionalidad de Apertura del Modal */
+    const handleOpenModals = () => {
+        setOpen(true);
+    }
+
+    return (
+        <div className='min-h-screen bg-pink-strong overflow-x-hidden'>
+            <Navbar/>
+
+            {/* Modal para el Cambio de Patio */}
+            <ProductModal open={open} setOpen={setOpen} />
+
+            <div className='p-2 mx-2 -mt-12 bg-white rounded-xl shadow-2xl lg:mx-20 lg:-mt-4'>
+                {children}
+            </div>
         </div>
-    </div>
-);
+    )
+}
+
+
+

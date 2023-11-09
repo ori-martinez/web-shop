@@ -54,9 +54,9 @@ export const CategoriaModal = ({ arrProds = [], open, setOpen, title}) => {
                             </Dialog.Title>
 
                             <header className='flex flex-col items-center text-lg text-center bg-snow md:block lg:block xl:block md:items-start lg:items-start xl:items-start md:text-left lg:text-left xl:text-left md:relative lg:relative xl:relative'>
-                                <div className='mx-4 my-4 flex flex-col text-center h-96 overflow-y-auto md:flex-none md:text-left md:relative lg:flex-none lg:text-left lg:relative xl:flex-none xl:text-left xl:relative text-base'>
+                                <div className='mx-4 my-4 flex flex-col text-center max-h-96 overflow-y-auto md:flex-none md:text-left md:relative lg:flex-none lg:text-left lg:relative xl:flex-none xl:text-left xl:relative text-base'>
                                     {arrProds.map((product, index) => (
-                                        <ProductoModalButton key={index} product={product}/>
+                                        <ProductoModalButton key={index} onClick={() => setOpen(!open)} product={product}/>
                                     ))}
                                 </div>
                             </header>

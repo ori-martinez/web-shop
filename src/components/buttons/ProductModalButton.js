@@ -4,15 +4,15 @@ import { TextButton } from './TextButton';
 /* Icons */
 import { BsCartPlus } from 'react-icons/bs';
 /* Hooks */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // COMPONENTE
 /* Botón de Apertura del Modal para el Producto */
 export const ProductoModalButton = ({ product }) => {
     // CONSTANTES
     /* Estado de Apertura */
-    const [open, setOpen] = useState(false);
-
+    const [ open, setOpen ] = useState(false);
+    
     // RETORNO
     return (<>
         <div className='p-2 mb-4 grid grid-cols-4 gap-x-8 gap-y-4 border rounded-lg'>

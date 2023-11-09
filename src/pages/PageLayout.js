@@ -1,15 +1,12 @@
-import React from 'react';
 /* Components */
-import {Navbar} from '../components/Navbar';
-import {ProductModal} from '../components/modals/ProductModal';
-
+import { Navbar } from '../components/Navbar';
+import { ProductModal } from '../components/modals/ProductModal';
 /* Hooks */
-import {useState} from 'react';
+import { useState } from 'react';
 
 // PLANTILLA
 /* Estructura Base de una Página */
 export const PageLayout = ({children}) => {
-
     // CONSTANTES
     const [open, setOpen] = useState(false);
 
@@ -18,13 +15,12 @@ export const PageLayout = ({children}) => {
         setOpen(true);
     }
 
+    // RETORNO
     return (
         <div className='min-h-screen bg-pink-strong overflow-x-hidden'>
             <Navbar/>
 
-
-
-            <div className='p-2 mx-2 -mt-12 bg-white rounded-xl shadow-2xl lg:mx-20 lg:-mt-4'>
+            <div className='p-2 mx-2 -mt-16 bg-white rounded-xl shadow-2xl lg:mx-28 lg:-mt-12'>
                 <button
                     onClick={() => setOpen(!open)}
                 >
@@ -47,7 +43,7 @@ export const PageLayout = ({children}) => {
                 />
 
 
-                {children}
+                { children }
             </div>
         </div>
     )

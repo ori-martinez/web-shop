@@ -1,7 +1,11 @@
+/* Router */
 import { Link } from 'react-router-dom';
+/* Components */
 import { InputSearch } from './inputs/InputSearch';
 import { TextButton } from './buttons/TextButton';
+/* Icons */
 import { BiLogoInstagram, BiUserCircle } from 'react-icons/bi';
+/* Hooks */
 import { useEffect, useState } from 'react';
 
 // COMPONENTE
@@ -25,7 +29,7 @@ export const Navbar = () => {
 
     // RETORNO
     return (<>
-        <nav className='px-32 pt-4 pb-16 -mx-28 bg-pink-baby rounded-b-full'>
+        <nav className='px-48 pt-4 pb-20 -mx-40 bg-pink-baby rounded-b-full'>
             <div className='flex flex-col'>
                 <div className='w-full grid grid-cols-3'>
                     <div className='col-span-2 md:col-span-1 md:col-start-2 lg:col-start-2'>
@@ -39,13 +43,13 @@ export const Navbar = () => {
                 <div className='flex justify-around flex-wrap'>
                     <img alt='Logo' className='w-28 h-auto md:w-36' src='https://static.whataform.com/avatar/avatar_d61bce3bef7ff7b_5520ec23cf2e8e0492339cd1f521b67fc1fb4b29.webp' title='Visitar mi perfil'/>
 
-                    <div className='md:mt-8 flex flex-col'>
-                        <h1 className='text-gray-700 font-bold md:text-lg'>AHEGAO</h1>
+                    <div className='mt-4 md:mt-8 flex flex-col'>
+                        <h1 className='text-gray-700 font-bold md:text-xl'>AHEGAO</h1>
                             
                         <p className='text-sm text-gray-500 md:text-base'>Tienda virtual | Caracas / La Guaira - Vzla <sub>VE</sub></p>
                     </div>
 
-                    <Link className='md:mt-12' target="_blank" title='Instagram' to='https://www.instagram.com/ahegaove'>
+                    <Link className='mt-8 md:mt-12' target="_blank" title='Instagram' to='https://www.instagram.com/ahegaove'>
                         <BiLogoInstagram className='w-6 h-6 text-gray-700'/>
                     </Link>
                 </div>

@@ -1,6 +1,6 @@
 /* Components */
 import { CartDescriptionSection } from '../components/sections/CartDescriptionSection';
-import { Footer } from '../components/Footer'; 
+import { Footer } from '../components/Footer';
 import { Navbar } from '../components/Navbar';
 /* Icons */
 import { HiArrowUp } from 'react-icons/hi';
@@ -22,7 +22,7 @@ export const PageLayout = ({ children, hasCartDescription = true }) => {
 
     // FUNCIONES
     /* Obtención del Botón Fijo */
-    const stickyButton = () => { 
+    const stickyButton = () => {
         if (window !== undefined) {
             window.scrollY > 400 ? setShowButton(true) : setShowButton(false);
         }
@@ -39,7 +39,7 @@ export const PageLayout = ({ children, hasCartDescription = true }) => {
     <div className='min-h-screen bg-pink-strong'>
         <Navbar/>
 
-        <div className='p-2 mx-2 -mt-12 bg-white rounded-xl shadow-2xl lg:mx-32 md:-mt-20'>{ children }</div>
+        <div className='p-2 mx-2 -mt-12 bg-white rounded-2xl shadow-2xl lg:mx-72 md:-mt-20'>{ children }</div>
 
         {hasCartDescription && (<CartDescriptionSection onClick={scrollTop} />)}
 

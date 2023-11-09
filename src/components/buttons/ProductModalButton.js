@@ -17,7 +17,7 @@ export const ProductoModalButton = ({ product }) => {
     return (<>
         <div className='p-2 mb-4 grid grid-cols-4 gap-x-8 gap-y-4 border rounded-lg'>
             <button className='col-span-4 flex items-center justify-center md:col-span-1 focus:ring-transparent focus:outline-none' onClick={() => setOpen(!open)}>
-                <img alt={product.title} className='w-48 h-auto' src={product.collageImages[0]} />
+                <img alt={product.title} className='w-32 h-auto' src={product.collageImages[0]} />
             </button>
 
             <div className='col-span-4 md:col-span-2'>
@@ -26,7 +26,7 @@ export const ProductoModalButton = ({ product }) => {
                 <p className='text-base text-gray-400'>{ product.description }</p>
             </div>
             <div className="col-span-4 flex items-center justify-center md:col-span-1 md:items-start md:justify-end">
-                <TextButton onClick={() => setOpen(!open)} icon={<BsCartPlus className='ml-2 mr-2 w-6 h-6 lg:ml-4' />} />
+                <TextButton onClick={() => setOpen(!open)} icon={<BsCartPlus className='ml-2 mr-2 w-5 h-5 lg:ml-4' />} />
             </div>
         </div>
 

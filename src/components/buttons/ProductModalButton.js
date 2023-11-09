@@ -4,7 +4,7 @@ import { TextButton } from './TextButton';
 /* Icons */
 import { BsCartPlus } from 'react-icons/bs';
 /* Hooks */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 // COMPONENTE
 /* Botón de Apertura del Modal para el Producto */

@@ -31,7 +31,10 @@ export const PageLayout = ({ children, hasCartDescription = true }) => {
     useEffect(() => {
         window.addEventListener('scroll', stickyButton);
 
+        // RETORNO
         return () => window.removeEventListener('scroll', stickyButton);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // RETORNO

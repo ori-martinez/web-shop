@@ -11,13 +11,15 @@ import { useEffect, useState } from 'react';
 // COMPONENTE
 /* Barra de Navegación */
 export const Navbar = () => {
+    // CONSTANTES
+    /* Estado de Muestra del Menú */
     const [ showScrollMenu, setShowScrollMenu] = useState(false);
 
+    // FUNCIONES
+    /* Obtención del Menú Fijo */
     const stickyNavbar = () => { 
         if (window !== undefined) {
-            let ws = window.scrollY;
-
-            ws > 300 ? setShowScrollMenu(true) : setShowScrollMenu(false);
+            window.scrollY > 300 ? setShowScrollMenu(true) : setShowScrollMenu(false);
         }
     };
 

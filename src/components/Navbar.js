@@ -41,7 +41,7 @@ export const Navbar = () => {
                             </div>
 
                             <div className='flex justify-center'>
-                                <TextButton icon={<BiUserCircle className='w-5 h-5' />} text='Iniciar sesión' />
+                                {/* <TextButton icon={<BiUserCircle className='w-5 h-5' />} text='Iniciar sesión' /> */}
                             </div>
                         </div>
                         <div className='mx-12 flex justify-around flex-wrap md:mx-24 lg:mx-40'>
@@ -70,7 +70,7 @@ export const Navbar = () => {
                     <InputSearch />
                 </div>
                 <div className='flex justify-end'>
-                    <TextButton icon={<BiUserCircle className='w-5 h-5' />} text='Iniciar sesión' />
+                    {/* <TextButton icon={<BiUserCircle className='w-5 h-5' />} text='Iniciar sesión' /> */}
                 </div>
             </nav>
         )}

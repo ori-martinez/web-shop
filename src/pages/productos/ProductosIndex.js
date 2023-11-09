@@ -17,9 +17,9 @@ export const ProductosIndex = () => {
                 <h1 className='text-lg text-gray-800 font-bold'>¿Qué estás buscando?</h1>
 
                 <div className='mt-6 mb-4 flex items-center overflow-auto'>
-                    <ImageButton srcImage={mediasProds[0].collageImages[0]} title='Medias' />
-                    <ImageButton srcImage={bondageProds[0].collageImages[0]} title='Bondage' />
-                    <ImageButton srcImage={ropaProds[0].collageImages[0]} title='Ropa' />
+                    <ImageButton arrProds={mediasProds} srcImage={mediasProds[0].collageImages[0]} title='Medias' />
+                    <ImageButton arrProds={bondageProds} srcImage={bondageProds[0].collageImages[0]} title='Bondage' />
+                    <ImageButton arrProds={ropaProds} srcImage={ropaProds[0].collageImages[0]} title='Ropa' />
                 </div>
                 <div className='px-4 py-4 mx-4 my-6 z-10 sticky top-14 bg-white overflow-auto text-sm md:top-16'>
                     <LinkSectionButton title='Bondage' />

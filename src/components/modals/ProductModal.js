@@ -7,7 +7,6 @@ import {FaShareSquare} from "react-icons/fa";
 
 
 export const ProductModal = ({open, setOpen, title, description, collageImages, colors}) => {
-
     const [mainImage, setMainImage] = useState(collageImages[0]);
 
     return (

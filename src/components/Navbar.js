@@ -45,13 +45,13 @@ export const Navbar = () => {
                         <div className='mx-12 flex justify-around flex-wrap md:mx-24 lg:mx-40'>
                             <img alt='Logo' className='w-28 h-auto md:w-36' src='https://static.whataform.com/avatar/avatar_d61bce3bef7ff7b_5520ec23cf2e8e0492339cd1f521b67fc1fb4b29.webp' title='Visitar mi perfil'/>
 
-                            <div className='mt-4 md:mt-8 flex flex-col'>
+                            <div className='mt-2 md:mt-8 flex flex-col'>
                                 <h1 className='text-gray-700 font-bold md:text-xl'>AHEGAO</h1>
                                     
                                 <p className='text-sm text-gray-500 md:text-base'>Tienda virtual | Caracas / La Guaira - Vzla <sub>VE</sub></p>
                             </div>
 
-                            <Link className='mt-8 md:mt-12' target="_blank" title='Instagram' to='https://www.instagram.com/ahegaove'>
+                            <Link className='mt-4 md:mt-12' target="_blank" title='Instagram' to='https://www.instagram.com/ahegaove'>
                                 <BiLogoInstagram className='w-6 h-6 text-gray-700'/>
                             </Link>
                         </div>

@@ -26,7 +26,8 @@ export const ProductModal = ({open, setOpen, title, description, collageImages, 
                         <Dialog.Overlay className='fixed inset-0 bg-black bg-opacity-40 transition-opacity'/>
                     </Transition.Child>
 
-                    <span aria-hidden='true' className='hidden sm:inline-block sm:align-middle sm:h-screen' >&#8203;</span>
+                    <span aria-hidden='true'
+                          className='hidden sm:inline-block sm:align-middle sm:h-screen'>&#8203;</span>
 
                     <Transition.Child
                         as={Fragment}
@@ -37,7 +38,8 @@ export const ProductModal = ({open, setOpen, title, description, collageImages, 
                         leaveFrom='opacity-100 translate-y-0 sm:scale-100'
                         leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
                     >
-                        <div className="inline-block align-bottom bg-white rounded-2xl pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-6xl sm:w-full">
+                        <div
+                            className="inline-block align-bottom bg-white rounded-2xl pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-6xl sm:w-full">
                             <div className="hidden sm:block absolute top-0 right-0 pt-6 pr-6">
                                 <button
                                     className="bg-white rounded-md text-gray-300 hover:text-indigo-300 focus:outline-none"
@@ -54,13 +56,15 @@ export const ProductModal = ({open, setOpen, title, description, collageImages, 
                                 as='h3'
                                 className='inline-flex items-center justify-center text-md font-semibold leading-6 text-blue-dark pl-5 py-3 mb-1'
                             >
-                                { title }
+                                {title}
                             </Dialog.Title>
 
                             <hr/>
 
-                            <header className='flex flex-col items-center text-lg text-center bg-snow md:block lg:block xl:block md:items-start lg:items-start xl:items-start md:text-left lg:text-left xl:text-left md:relative lg:relative xl:relative'>
-                                <div className='flex flex-col text-center md:flex-none md:text-left md:relative md:m-0 lg:flex-none lg:text-left lg:relative xl:flex-none xl:text-left xl:relative text-base'>
+                            <header
+                                className='flex flex-col items-center text-lg text-center bg-snow md:block lg:block xl:block md:items-start lg:items-start xl:items-start md:text-left lg:text-left xl:text-left md:relative lg:relative xl:relative'>
+                                <div
+                                    className='flex flex-col text-center md:flex-none md:text-left md:relative md:m-0 lg:flex-none lg:text-left lg:relative xl:flex-none xl:text-left xl:relative text-base'>
                                     <div className="grid grid-cols-6 gap-4 mt-6 mb-8">
                                         <div className="col-span-6 md:col-span-3 relative">
                                             <div className='flex flex-col md:flex-row'>
@@ -71,7 +75,7 @@ export const ProductModal = ({open, setOpen, title, description, collageImages, 
                                                         type="button"
                                                     >
                                                         <div className='p-2'>
-                                                            <FaShareSquare className='-ml-2.5 text-white h-5 w-5' />
+                                                            <FaShareSquare className='-ml-2.5 text-white h-5 w-5'/>
                                                         </div>
                                                     </button>
 
@@ -104,10 +108,12 @@ export const ProductModal = ({open, setOpen, title, description, collageImages, 
                                         {/* Lado Derecho */}
                                         <div className='col-span-6 ml-4 mr-4 md:col-span-3 md:-ml-40'>
                                             <div className='flex flex-col md:flex-row mb-2'>
-                                                <div className='text-base font-semibold mb-2 md:mb-0 md:mr-4 mt-2'>{title}</div>
+                                                <div
+                                                    className='text-base font-semibold mb-2 md:mb-0 md:mr-4 mt-2'>{title}</div>
                                             </div>
                                             <div className='pt-2 md:pt-0'>
-                                                <div className='font-base text-gray-500 text-sm mb-4'>{description}</div>
+                                                <div
+                                                    className='font-base text-gray-500 text-sm mb-4'>{description}</div>
                                             </div>
                                             <div className='border-t border-gray-300 pt-2 md:pt-0'>
                                                 <div className='font-semibold mt-4 mb-2'>Color</div>
@@ -123,7 +129,8 @@ export const ProductModal = ({open, setOpen, title, description, collageImages, 
                                                                 value={color}
                                                             />
 
-                                                            <span className='ml-2 text-gray-600 text-sm font-semibold'>{ color }</span>
+                                                            <span
+                                                                className='ml-2 text-gray-600 text-sm font-semibold'>{color}</span>
                                                         </label>
                                                     </div>
                                                 ))}

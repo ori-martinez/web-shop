@@ -21,7 +21,7 @@ export const ProductosIndex = () => {
                     <ImageButton srcImage={bondageProds[0].collageImages[0]} title='Bondage' />
                     <ImageButton srcImage={ropaProds[0].collageImages[0]} title='Ropa' />
                 </div>
-                <div className='px-4 py-4 mx-4 my-6 sticky top-14 bg-white overflow-auto text-sm md:top-16'>
+                <div className='px-4 py-4 mx-4 my-6 z-10 sticky top-14 bg-white overflow-auto text-sm md:top-16'>
                     <LinkSectionButton title='Bondage' />
                     <LinkSectionButton title='Medias' />
                     <LinkSectionButton title='Ropa' />

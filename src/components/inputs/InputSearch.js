@@ -3,7 +3,7 @@ import { FaSearch } from 'react-icons/fa';
 
 // COMPONENTE
 /* Input para un Buscador */
-export const InputSearch = ({ name = 'search', onChange, placeholder = 'Buscador', search }) => (
+export const InputSearch = ({ name = 'search', onChange, onClick, placeholder = 'Buscador', search }) => (
     <div className='relative flex items-center justify-center'>
         <input 
             autoComplete='off'
@@ -16,7 +16,7 @@ export const InputSearch = ({ name = 'search', onChange, placeholder = 'Buscador
         />
 
         {/* Botón de Acción */}
-        <button className='px-4 py-[0.7rem] absolute bg-gray-50 border border-gray-300 rounded-r-md text-xl right-0'>
+        <button className='px-4 py-[0.7rem] absolute bg-gray-50 border border-gray-300 rounded-r-md text-xl right-0  focus:ring-transparent focus:outline-none' onClick={onClick}>
             <FaSearch className='h-4 w-4 text-gray-400' />
         </button>
     </div>

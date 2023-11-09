@@ -2,18 +2,24 @@
 import { Link } from 'react-router-dom';
 /* Components */
 import { InputSearch } from './inputs/InputSearch';
-import { TextButton } from './buttons/TextButton';
+/* import { TextButton } from './buttons/TextButton'; */
 /* Icons */
-import { BiLogoInstagram, BiUserCircle } from 'react-icons/bi';
+import { BiLogoInstagram/* , BiUserCircle */ } from 'react-icons/bi';
+/* Constants */
+import { allProds } from '../constants/productos';
 /* Hooks */
 import { useEffect, useState } from 'react';
+import { SearchModal } from './modals/SearchModal';
 
 // COMPONENTE
 /* Barra de Navegación */
 export const Navbar = () => {
     // CONSTANTES
-    /* Estado de Muestra del Menú */
-    const [ showScrollMenu, setShowScrollMenu] = useState(false);
+    const [ loading, setLoading ] = useState(false);                        /* Estado de Carga */
+    const [ open, setOpen ] = useState(false);                              /* Estado de Apertura del Modal */
+    const [ showScrollMenu, setShowScrollMenu] = useState(false);           /* Estado de Muestra del Menú */
+    const [ search, setSearch ] = useState('');                             /* Valor del Búscador */
+    const [ searchResult, setSearchResult ] = useState([]);                 /* Resultados de la Búsqueda */
 
     // FUNCIONES
     /* Obtención del Menú Fijo */
@@ -21,12 +27,35 @@ export const Navbar = () => {
         if (window !== undefined) {
             window.scrollY > 300 ? setShowScrollMenu(true) : setShowScrollMenu(false);
         }
-    };
+    }
+
+    /* Manejador del Buscador */
+    const onChange = (e) => setSearch(e.target.value);
+
+    /* Manejador del Click */
+    const onClick = (inputModal = false) => {
+        if (inputModal) {
+            setLoading(true);
+            setSearchResult(
+                search === '' ? [] : allProds.filter((product) => product.title.toLowerCase().includes(search))
+            );
+            setTimeout(() => setLoading(false), 1000);
+        }
+        else {
+            if (search !== '') {
+                setOpen(!open);
+                setSearchResult(allProds.filter((product) => product.title.toLowerCase().includes(search)));
+            }
+        }
+    }
 
     useEffect(() => {
         window.addEventListener('scroll', stickyNavbar);
 
+        // RETORNO
         return () => window.removeEventListener('scroll', stickyNavbar);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // RETORNO
@@ -37,7 +66,7 @@ export const Navbar = () => {
                     <div className='w-[48%] flex flex-col'>
                         <div className='w-full grid grid-cols-3'>
                             <div className='col-span-2 md:col-span-1 md:col-start-2 lg:col-start-2'>
-                                <InputSearch />
+                                <InputSearch onChange={onChange} onClick={() => onClick()} search={search} />
                             </div>
 
                             <div className='flex justify-center'>
@@ -67,12 +96,22 @@ export const Navbar = () => {
                 <img alt='Logo' className='w-8 md:w-12 h-auto' src='https://static.whataform.com/avatar/avatar_d61bce3bef7ff7b_5520ec23cf2e8e0492339cd1f521b67fc1fb4b29.webp'/>
 
                 <div className='col-span-2'>
-                    <InputSearch />
+                    <InputSearch onChange={onChange} onClick={() => onClick()} search={search} />
                 </div>
                 <div className='flex justify-end'>
                     {/* <TextButton icon={<BiUserCircle className='w-5 h-5' />} text='Iniciar sesión' /> */}
                 </div>
             </nav>
         )}
+
+        <SearchModal
+            arrProds={searchResult}
+            loading={loading}
+            onChange={onChange}
+            onClick={() => onClick(true)}
+            open={open}
+            setOpen={setOpen}
+            search={search}
+        />
     </>);
 }

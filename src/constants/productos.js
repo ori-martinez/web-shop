@@ -76,3 +76,5 @@ export const ropaProds = [
         title: 'Pantalones de Cuerina',
     },
 ]
+
+export const allProds = [ ...bondageProds, ...mediasProds, ...ropaProds ]

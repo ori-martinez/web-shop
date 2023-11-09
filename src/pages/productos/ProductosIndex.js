@@ -13,21 +13,19 @@ export const ProductosIndex = () => {
     // RETORNO
     return (
         <PageLayout>
-            <div className='px-4 pt-12 pb-4 my-4'>
+            <div className='relative px-0 pt-12 pb-4 my-4 md:px-4'>
                 <h1 className='text-lg text-gray-800 font-bold'>¿Qué estás buscando?</h1>
 
-                <div className='mt-6 mb-4 flex items-center'>
+                <div className='mt-6 mb-4 flex items-center overflow-auto'>
                     <ImageButton srcImage={mediasProds[0].collageImages[0]} title='Medias' />
                     <ImageButton srcImage={bondageProds[0].collageImages[0]} title='Bondage' />
                     <ImageButton srcImage={ropaProds[0].collageImages[0]} title='Ropa' />
                 </div>
-                <div className='mx-4 my-6'>
+                <div className='px-4 py-4 mx-4 my-6 sticky top-14 bg-white overflow-auto text-sm md:top-16'>
                     <LinkSectionButton title='Bondage' />
                     <LinkSectionButton title='Medias' />
                     <LinkSectionButton title='Ropa' />
                 </div>
-                
-                <hr />
 
                 <CategoriaSection arrProds={bondageProds} id='bondage-section' title='Bondage' />
                 <CategoriaSection arrProds={mediasProds} id='medias-section' title='Medias' />

@@ -47,6 +47,18 @@ export const ProductModal = ({ collageImages, colors, description, price, open, 
         if (qty !== 1) setQty(qty - 1);
     }
 
+    /* Funcionalidad de Producto al Carrito */
+    const setCart = () => {
+        // VARIABLES
+        let lsCart = JSON.parse(localStorage.getItem('cart')) === null ? [] : JSON.parse(localStorage.getItem('cart'));         /* Carrito del localStorage */
+        let amount = Number(price) * Number(qty);                                                                               /* Monto de la Compra */
+
+        if (lsCart.length === 0) localStorage.setItem('cart', JSON.stringify([ { amount, color: checkColor, qty, title } ]));
+        else localStorage.setItem('cart', JSON.stringify([ ...lsCart, { amount, color: checkColor, qty, title } ]));
+
+        window.location.reload(true);
+    }
+
     // RETORNO
     return (
         <Transition.Root as={Fragment} show={open}>
@@ -101,6 +113,8 @@ export const ProductModal = ({ collageImages, colors, description, price, open, 
                                                 <div className='relative ml-8 w-3/4 h-auto md:w-2/4'>
                                                     <button
                                                         className="absolute -top-1 right-0 mr-4 h-12 w-12 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-b-lg shadow-sm text-white bg-pink-stronger hover:bg-pink-dark focus:outline-none"
+                                                        onClick={() => setCart()}
+                                                        title='Agregar al carrito'
                                                         type="button"
                                                     >
                                                         <div className='p-2'>

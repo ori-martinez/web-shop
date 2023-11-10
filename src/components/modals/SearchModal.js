@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 /* Components */
 import { ProductoModalButton } from '../buttons/ProductModalButton';
 /* Icons */

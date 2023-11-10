@@ -2,6 +2,8 @@
 import { Link } from 'react-router-dom';
 /* Components */
 import { InputSearch } from './inputs/InputSearch';
+import { ProductModal } from './modals/ProductModal';
+import { SearchModal } from './modals/SearchModal';
 /* import { TextButton } from './buttons/TextButton'; */
 /* Icons */
 import { BiLogoInstagram/* , BiUserCircle */ } from 'react-icons/bi';
@@ -9,17 +11,18 @@ import { BiLogoInstagram/* , BiUserCircle */ } from 'react-icons/bi';
 import { allProds } from '../constants/productos';
 /* Hooks */
 import { useEffect, useState } from 'react';
-import { SearchModal } from './modals/SearchModal';
 
 // COMPONENTE
 /* Barra de Navegación */
 export const Navbar = () => {
     // CONSTANTES
     const [ loading, setLoading ] = useState(false);                        /* Estado de Carga */
-    const [ open, setOpen ] = useState(false);                              /* Estado de Apertura del Modal */
+    const [ open, setOpen ] = useState(false);                              /* Estado de Apertura del Modal del Buscador */
     const [ showScrollMenu, setShowScrollMenu] = useState(false);           /* Estado de Muestra del Menú */
     const [ search, setSearch ] = useState('');                             /* Valor del Búscador */
     const [ searchResult, setSearchResult ] = useState([]);                 /* Resultados de la Búsqueda */
+    const [ openModal, setOpenModal ] = useState(false);                    /* Estado de Apertura del Modal de Producto */
+    const [ selectedProd, setSelectedProd ] = useState([]);                 /* Producto Seleccionado */
 
     // FUNCIONES
     /* Obtención del Menú Fijo */
@@ -37,16 +40,22 @@ export const Navbar = () => {
         if (inputModal) {
             setLoading(true);
             setSearchResult(
-                search === '' ? [] : allProds.filter((product) => product.title.toLowerCase().includes(search))
+                search === '' ? [] : allProds.filter((product) => product.title.toLowerCase().includes(search.toLowerCase()))
             );
             setTimeout(() => setLoading(false), 1000);
         }
         else {
             if (search !== '') {
                 setOpen(!open);
-                setSearchResult(allProds.filter((product) => product.title.toLowerCase().includes(search)));
+                setSearchResult(allProds.filter((product) => product.title.toLowerCase().includes(search.toLowerCase())));
             }
         }
+    }
+
+    /* Manejador del Modal para el Producto */
+    const handleProductModal = (product) => {
+        setOpenModal(!openModal);
+        setSelectedProd(product);
     }
 
     useEffect(() => {
@@ -106,6 +115,7 @@ export const Navbar = () => {
 
         <SearchModal
             arrProds={searchResult}
+            handleModal={handleProductModal}
             loading={loading}
             onChange={onChange}
             onClick={() => onClick(true)}
@@ -113,5 +123,18 @@ export const Navbar = () => {
             setOpen={setOpen}
             search={search}
         />
+
+        {selectedProd.length !== 0 && (
+            <ProductModal
+                collageImages={selectedProd.collageImages}
+                colors={selectedProd.colors}
+                description={selectedProd.description}
+                open={open}
+                setOpen={setOpen}
+                price={selectedProd.price}
+                setSelectedProd={setSelectedProd}
+                title={selectedProd.title}
+            />
+        )}
     </>);
 }

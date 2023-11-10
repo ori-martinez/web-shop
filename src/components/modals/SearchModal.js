@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 /* Components */
 import { ProductoModalButton } from '../buttons/ProductModalButton';
 /* Icons */
@@ -9,7 +9,7 @@ import { Dialog, Transition } from '@headlessui/react';
 
 // COMPONENTE
 /* Modal de Búsqueda de Productos */
-export const SearchModal = ({ arrProds, loading, onChange, onClick, open, setOpen, search }) => {
+export const SearchModal = ({ arrProds, handleModal, loading, onChange, onClick, open, setOpen, search }) => {
     // RETORNO
     return (
         <Transition.Root as={Fragment} show={open}>
@@ -93,7 +93,7 @@ export const SearchModal = ({ arrProds, loading, onChange, onClick, open, setOpe
                                             </div>
                                         )
                                         : arrProds.length !== 0
-                                            ? arrProds.map((product, index) => (<ProductoModalButton key={index} handleModal={() => setOpen(!open)} product={product}/>))
+                                            ? arrProds.map((product, index) => (<ProductoModalButton key={index} handleModal={handleModal} product={product}/>))
                                             : (<div className='py-8 text-center'>
                                                 <h1 className='text-lg text-gray-500 font-bold'>Sin resultados para mostrar...</h1>
 

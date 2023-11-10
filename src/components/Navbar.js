@@ -61,7 +61,7 @@ export const Navbar = () => {
     // RETORNO
     return (<>
         <div className="-mt-[200px] overflow-x-hidden">
-            <div className="ml-[-50%] w-[200%] h-[500px] rounded-b-[100%] bg-pink-baby">
+            <div className="ml-[-50%] w-[200%] h-[500px] rounded-b-[100%] bg-pink-200">
                 <nav className='pt-56 flex items-center justify-center'>
                     <div className='w-[48%] flex flex-col'>
                         <div className='w-full grid grid-cols-3'>

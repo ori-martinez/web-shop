@@ -79,10 +79,10 @@ export const ProductModal = ({ collageImages, colors, description, price, open, 
                                                     <img alt={title} className='border-solid border border-gray-300 rounded-3xl' src={mainImage} />
 
                                                     {/* Otras Imágenes */}
-                                                    <div className="absolute -bottom-4 left-3 flex space-x-4">
+                                                    <div className="absolute -bottom-4 left-3 flex space-x-2">
                                                         {collageImages.map((image, index) => (
                                                             <button
-                                                                className="bg-white -mr-3 rounded-full border border-gray-300"
+                                                                className="bg-white rounded-full border border-gray-300"
                                                                 key={`${index}-${title.replace(' ', '-').toLowerCase()}`}
                                                                 onClick={() => setMainImage(image)}
                                                             >
@@ -102,7 +102,7 @@ export const ProductModal = ({ collageImages, colors, description, price, open, 
                                             <div className='pt-2 md:pt-0'>
                                                 <div className='font-base text-gray-500 text-sm mb-4'>{ description }</div>
                                             </div>
-                                            <div className='grid grid-cols-2 border-t border-gray-300 pt-2 md:pt-0'>
+                                            <div className='z-50 relative grid grid-cols-2 border-t border-gray-300 pt-2 md:pt-0'>
                                                 <div>
                                                     <div className='font-semibold mt-4 mb-2'>Color</div>
 

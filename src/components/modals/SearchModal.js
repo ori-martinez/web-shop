@@ -93,7 +93,7 @@ export const SearchModal = ({ arrProds, loading, onChange, onClick, open, setOpe
                                             </div>
                                         )
                                         : arrProds.length !== 0
-                                            ? arrProds.map((product, index) => (<ProductoModalButton key={index} onClick={() => setOpen(!open)} product={product}/>))
+                                            ? arrProds.map((product, index) => (<ProductoModalButton key={index} handleModal={() => setOpen(!open)} product={product}/>))
                                             : (<div className='py-8 text-center'>
                                                 <h1 className='text-lg text-gray-500 font-bold'>Sin resultados para mostrar...</h1>
 

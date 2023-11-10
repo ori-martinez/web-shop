@@ -6,7 +6,7 @@ import {AiOutlineClose} from 'react-icons/ai';
 /* Headless UI */
 import {Dialog, Transition} from '@headlessui/react';
 
-export const CategoriaModal = ({ arrProds = [], open, setOpen, title}) => {
+export const CategoriaModal = ({ arrProds = [], handleModal, open, setOpen, title}) => {
     // RETORNO
     return (
         <Transition.Root as={Fragment} show={open}>
@@ -56,7 +56,7 @@ export const CategoriaModal = ({ arrProds = [], open, setOpen, title}) => {
                             <header className='flex flex-col items-center text-lg text-center bg-snow md:block lg:block xl:block md:items-start lg:items-start xl:items-start md:text-left lg:text-left xl:text-left md:relative lg:relative xl:relative'>
                                 <div className='mx-4 my-4 flex flex-col text-center max-h-96 overflow-y-auto md:flex-none md:text-left md:relative lg:flex-none lg:text-left lg:relative xl:flex-none xl:text-left xl:relative text-base'>
                                     {arrProds.map((product, index) => (
-                                        <ProductoModalButton key={index} onClick={() => setOpen(!open)} product={product}/>
+                                        <ProductoModalButton key={index} handleModal={handleModal} product={product}/>
                                     ))}
                                 </div>
                             </header>

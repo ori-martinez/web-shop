@@ -1,11 +1,15 @@
 import { Fragment } from 'react';
 /* Icons */
 import { AiOutlineClose } from 'react-icons/ai';
-import { FaShareSquare } from "react-icons/fa";
+import { FaDollarSign, FaMinusCircle, FaPlusCircle, FaShareSquare } from "react-icons/fa";
 /* Hooks */
 import { useState } from 'react';
 /* Headless UI */
 import { Dialog, Transition } from '@headlessui/react';
+
+// CONSTANTES
+/* Expresión Regular de Solo Números */
+const regex = new RegExp(/^([0-9])*$/);
 
 // COMPONENTE
 /* Modal del Producto */
@@ -14,6 +18,34 @@ export const ProductModal = ({ collageImages, colors, description, price, open, 
     const [ mainImage, setMainImage ] = useState(collageImages[0]);         /* Imagen Principal */
     const [ checkColor, setCheckColor ] = useState(colors[0]);              /* Color Seleccionado */
     const [ qty, setQty ] = useState(1);                                    /* Cantidad */
+
+    // FUNCIONES
+    /* Manejador del Cambio del Input */
+    const handleChange = (e) => {
+        // VARIABLES
+        /* Valor Ingresado */
+        let value = e.target.value;
+
+        // CONDICIONAL
+        /* Comprobación del Ingreso de un Número */
+        if (regex.test(value)) {
+            // CONDICIONAL
+            /* Comprobación del Ingreso Diferente de Cero */
+            if (value !== '0') {
+                setQty(value === '' ? value : Number(value));
+            }
+        }
+    }
+
+    /* Funcionalidad de Aumento */
+    const handlePlusButton = () => setQty(qty + 1);
+
+    /* Funcionalidad de Disminución */
+    const handleMinusButton = () => {
+        // CONDICIONAL
+        /* Comprobación de Cantidad Diferente de Uno */
+        if (qty !== 1) setQty(qty - 1);
+    }
 
     // RETORNO
     return (
@@ -83,7 +115,7 @@ export const ProductModal = ({ collageImages, colors, description, price, open, 
                                                         {collageImages.map((image, index) => (
                                                             <button
                                                                 className="bg-white rounded-full border border-gray-300"
-                                                                key={`${index}-${title.replace(' ', '-').toLowerCase()}`}
+                                                                key={`image-${index}`}
                                                                 onClick={() => setMainImage(image)}
                                                             >
                                                                 <img alt='#' className='w-14 h-14 rounded-full' src={image} />
@@ -97,7 +129,9 @@ export const ProductModal = ({ collageImages, colors, description, price, open, 
                                         {/* Lado Derecho */}
                                         <div className='col-span-6 ml-4 mr-4 md:col-span-3 md:-ml-40'>
                                             <div className='flex flex-col md:flex-row mb-2'>
-                                                <div className='text-base font-semibold mb-2 md:mb-0 md:mr-4 mt-2'>{ title }</div>
+                                                <div className='mb-2 inline-flex items-center text-base font-semibold md:mb-0 md:mr-4 mt-2'>
+                                                    { title } : <FaDollarSign className='ml-2 w-4 h-4 text-green-700' /> <span className='font-normal'>{ price }</span>
+                                                </div>
                                             </div>
                                             <div className='pt-2 md:pt-0'>
                                                 <div className='font-base text-gray-500 text-sm mb-4'>{ description }</div>
@@ -107,10 +141,9 @@ export const ProductModal = ({ collageImages, colors, description, price, open, 
                                                     <div className='font-semibold mt-4 mb-2'>Color</div>
 
                                                     {colors.map((color) => (
-                                                        <div className='w-full inline-flex items-center'>
+                                                        <div className='w-full inline-flex items-center' key={`color-${color.toLowerCase()}`}>
                                                             <button
                                                                 className={`mx-2 w-3.5 h-3.5 rounded-full border border-pink-strong ${checkColor === color ? 'bg-pink-strong ring-pink-200 ring-2 ring-offset-1' : 'bg-white'}`}
-                                                                key={`${color.toLowerCase()}-${title.replace(' ', '-').toLowerCase()}`}
                                                                 onClick={() => setCheckColor(color)}
                                                             >
                                                                 <span className='sr-only'>{ color }</span>
@@ -119,32 +152,37 @@ export const ProductModal = ({ collageImages, colors, description, price, open, 
                                                             <span>{ color }</span>
                                                         </div>
                                                     ))}
-                                                    
-                                                    {/* {colors.map((color) => (
-                                                        <div className="form-check" key={`${color.toLowerCase()}-${title.toLowerCase()}`}>
-                                                            <input
-                                                                className='mx-2.5 mt-1 w-3 h-3 bg-white bg-center bg-contain bg-no-repeat border border-pink-strong rounded-full form-check-input appearance-none cursor-pointer transition duration-200 checked:bg-pink-strong checked:border-pink-strong checked:ring-pink-200 checked:ring-2 checked:ring-offset-1 focus:outline-none'
-                                                                defaultChecked={color === checkColor}
-                                                                id={`${color.toLowerCase()}-${title.toLowerCase()}`}
-                                                                name={`${color.toLowerCase()}-${title.toLowerCase()}`}
-                                                                onClick={(e) => setCheckColor(e.target.value)} 
-                                                                type='radio'
-                                                                value={color}
-                                                            />
-                                                
-                                                            <label className="inline-block form-check-label text-ming text-md font-semibold" htmlFor={`${color.toLowerCase()}-${title.toLowerCase()}`}>{ color }</label>
-                                                        </div>
-                                                    ))} */}
                                                 </div>
                                                 <div>
                                                     <div className='font-semibold mt-4 mb-2'>Cantidad</div>
-                                                    
-                                                    <input
-                                                        min={1}
-                                                        onChange={(e) => setQty(e.target.value)}
-                                                        type='number'
-                                                        value={qty}
-                                                    />
+                                                    <div className='col-span-2 w-full flex items-center justify-center'>
+                                                        <button 
+                                                            className='focus:outline-none'
+                                                            disabled={qty === ''}
+                                                            onClick={() => handleMinusButton()}
+                                                            title='Disminuir'
+                                                            
+                                                        >
+                                                            <FaMinusCircle className={`w-4 h-4 ${(qty === '') ? 'text-pink-dark' : (qty === 1) ? 'text-pink-dark' : 'text-pink-stronger'} hover:text-pink-dark`} />
+                                                        </button>
+                
+                                                        <input 
+                                                            className='mx-1.5 w-16 h-8 border border-gray-300 rounded-md shadow-sm appearance-none text-base text-center focus:border-gray-300 focus:ring-0 focus:outline-none'
+                                                            onChange={(e) => handleChange(e)}
+                                                            type='text'
+                                                            value={qty}
+                                                        />
+
+                                                        <button 
+                                                            className='focus:outline-none'
+                                                            disabled={qty === ''}
+                                                            onClick={() => handlePlusButton()}
+                                                            title='Aumentar'
+                                                            
+                                                        >
+                                                            <FaPlusCircle className={`w-4 h-4 ${(qty === '') ? 'text-pink-dark' : 'text-pink-stronger'} hover:text-pink-dark`} />
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

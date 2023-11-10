@@ -42,7 +42,7 @@ export const PageLayout = ({ children, hasCartDescription = true }) => {
     <div className='min-h-screen bg-pink-strong'>
         <Navbar/>
 
-        <div className='p-2 mx-2 -mt-12 bg-white rounded-2xl shadow-2xl lg:mx-72 md:-mt-20'>{ children }</div>
+        <div className='p-2 mx-2 -mt-12 bg-white rounded-2xl shadow-2xl lg:mx-72 md:-mt-12'>{ children }</div>
 
         {hasCartDescription && (<CartDescriptionSection onClick={scrollTop} />)}
 

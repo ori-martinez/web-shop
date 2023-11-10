@@ -6,6 +6,7 @@ export const bondageProds = [
         ],
         colors: ['Negro',],
         description: 'Con un ajuste perfecto y materiales suaves, te sentirás cómodo mientras despiertas tu lado más juguetón.',
+        price: '10.00',
         title: 'Arnés de Glúteos con Esposas',
     },
     {
@@ -15,6 +16,7 @@ export const bondageProds = [
         ],
         colors: ['Negro', 'Rojo',],
         description: '',
+        price: '10.00',
         title: 'Kit BDSM',
     },
 ]
@@ -29,6 +31,7 @@ export const mediasProds = [
         ],
         colors: ['Negro',],
         description: 'Ya sea para una ocasión especial o para uso diario, nuestras Medias Pantys son la elección perfecta para lucir impecable en cualquier momento.',
+        price: '10.00',
         title: 'Medias Pantys',
     },
     {
@@ -40,6 +43,7 @@ export const mediasProds = [
         ],
         colors: ['Negro',],
         description: 'Las Medias Tobilleras de Malla son una opción versátil para complementar cualquier outfit.',
+        price: '10.00',
         title: 'Medias Tobilleras de Malla',
     },
     {
@@ -50,6 +54,7 @@ export const mediasProds = [
         ],
         colors: ['Negro',],
         description: '',
+        price: '10.00',
         title: 'Medias Tobilleras Trnasparentes',
     },
     {
@@ -60,6 +65,7 @@ export const mediasProds = [
         ],
         colors: ['Negro', 'Blanco'],
         description: 'Ya sea para una ocasión especial o simplemente para sorprender a tu pareja, nuestras Medias Transparentes de Nylon serán tu arma secreta.',
+        price: '10.00',
         title: 'Medias Transparentes Nylon',
     },
 ]
@@ -73,6 +79,7 @@ export const ropaProds = [
         ],
         colors: ['Negro',],
         description: '',
+        price: '10.00',
         title: 'Pantalones de Cuerina',
     },
 ]
